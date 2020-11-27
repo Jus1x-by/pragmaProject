@@ -1,0 +1,22 @@
+.container__table {
+    margin: 0 auto;
+    width:90%;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    margin-bottom: 30px;
+    border:2px solid #000;
+}
+
+th {
+    border-bottom: 3px solid black;
+}
+
+td {
+    padding:10px 14px;
+    font-size: 15px;
+}

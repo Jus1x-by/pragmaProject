@@ -1,0 +1,149 @@
+/* add fonts */
+@font-face{
+    font-family: "UbuntuMono";
+    src:url('../fonts/RobotoMono-Regular.ttf') format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-size: 15px;
+}
+*{
+    margin:0;
+    padding: 0;
+    list-style: none;
+    line-height: normal;
+    font-size:15px; 
+    font-family: "UbuntuMono", sans-serif;
+}
+
+
+/* the highest part of header */
+.top__header{
+    background-color:#000;
+    height:30px;
+}
+/* !!!!!!!!!! styles for both containers */
+.top__container,
+.bottom__container {
+    padding-top: 2px;
+    width:80%;
+    margin:0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+/* styles for info */
+.info__nav {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-item {
+    margin-right: 16px;
+    list-style: none;
+}
+/* styles for links in header&footer */
+.item-link{
+    text-decoration: none;
+    color:#000;
+}
+
+.fff{
+    color:#fff;
+}
+
+.item-link:hover{
+    text-decoration: none;
+    color:#f7753e;
+    transition: 0.4s;
+}
+/* styles for telephone */
+.phone{
+    text-decoration: none;
+    color:#fff;
+}
+
+.phone:hover{
+    color:#f7753e;
+    text-decoration: none;
+}
+
+.phone-icon{
+    width: 14px;
+}
+
+
+
+/* styles for navbar */
+
+.bottom__header{
+    background-color:#fffde8;
+    height:54px;
+    padding: 4px 0 0;
+}
+
+
+/* logo */
+
+
+.logo-link{
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 2.3px;
+    text-transform: uppercase;
+    color:#000;
+    text-decoration: none;
+}
+
+.logo-link:hover{
+    color:#f7753e;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+
+/* categories */
+
+
+.container__navbar{
+    margin:9px 0px;
+}
+
+.navbar__list{
+    display: flex;
+    flex-direction: row;
+}
+
+.list-item{
+    margin-left:18px;
+    list-style: none;
+    color:#000;
+    /* font-weight: 580; */
+}
+
+.list-item:first-child{
+    margin-left: 0;
+}
+
+
+/* shoppingCart + Auth */
+
+
+.container__IUser{
+    margin: 6px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.IUser__cart{
+    margin-right: 16px;
+}
+
+.interface-icon{
+    width:30px;
+}
+
+.interface-icon:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}

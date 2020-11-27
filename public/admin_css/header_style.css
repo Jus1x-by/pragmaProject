@@ -1,0 +1,37 @@
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    margin: 20px auto;
+    width:80%;
+    height:25vh;
+    display:flex;
+    flex-direction: row;
+    background-color: #f2f2f2;
+}
+
+.item-container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:33.333333%;
+    color: #000000;
+    font-weight: 700;
+    font-size:26px;
+    text-decoration: none;
+}
+
+.item-container:hover {
+    background-color: #fff;
+    transition: .4s;
+    border-top: 6px solid #000000;
+    border-bottom: 6px solid #000000;
+}
+
+.item-product:hover {
+    border-top: 6px solid #f03030;
+    border-bottom: 6px solid #f03030;
+}

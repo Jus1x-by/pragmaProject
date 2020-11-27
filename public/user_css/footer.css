@@ -1,0 +1,132 @@
+/* styles for top footer */
+
+.top__footer{
+    padding: 25px 0px;
+    background-color: #fffde8;
+}
+
+
+/* styles logo/jurisprudence */
+
+
+.container__info{
+    display:flex;
+    flex-direction: column;
+}
+
+.container__blocks{
+    margin-top:15px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* styles for adresses */
+
+.blocks__adresses{
+    margin-bottom: 15px;
+}
+
+.adress{
+    padding:3px 0px;
+}
+
+.placeholder-icon{
+    width:14px;
+}
+
+.adress-text{
+    letter-spacing: 1.2px;
+    font-weight: 550;
+}
+
+/* styles for jurisprudence */
+
+.blocks__jurisprudence{
+    letter-spacing: 1.2px;
+    font-size: 16px;
+}
+
+
+/* categories */
+
+
+
+.container__categories{
+    display: flex;
+    flex-direction: row;
+}
+
+.categories__list{
+    padding:5px 15px;
+}
+
+.container__categories .categories__list:first-child{
+    margin-right:60px;
+}
+
+.container__categories .categories__list:last-child{
+    margin-left:60px;
+}
+
+.li-item{
+    text-decoration: none;
+    list-style: none;
+    color:#000;
+    margin:4px 0px;
+    font-size: 17px;
+    font-weight: 510;
+}
+
+.categories__list .li-item:first-child{
+    color:#000;
+    font-weight: 670;
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+
+
+/* styles for bottom footer */
+
+
+.bottom__footer{
+    background-color: #000;
+    color:#fff;
+}
+
+.bottom__container{
+    width:80%;
+    padding: 2px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.container__socialmedia{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.soc__icon:first-child{
+    margin-left:0px;
+}
+
+.soc__icon{
+    text-decoration: none;
+    margin-left:8px;
+}
+
+.soc-item {
+    width:18px;
+}
+
+@media(max-width:576px){
+    .top__footer{
+        display: none;
+    }
+    .bottom__footer{
+        margin-top:20px;
+    }
+}

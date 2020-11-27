@@ -1,0 +1,27 @@
+<%- include ('header') -%>
+
+
+<div class="container__table">
+    <a href="/admin/categories/add-category" class="table__add"><img src="/img/icons/plus.svg" alt="Добавить"></a>
+    <table>
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% categories.forEach((cat) => { %>
+            <tr>
+                <td><%= cat.title %></td>
+                <td><a href="/admin/categories/edit-category/<%= cat._id %>">Edit</a></td>
+                <td><a href="/admin/categories/delete-category/<%= cat._id %>">Delete</a></td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div>
+
+
+<%- include ('footer') -%>

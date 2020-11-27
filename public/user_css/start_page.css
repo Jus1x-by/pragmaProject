@@ -1,0 +1,192 @@
+.startpage__container {
+    background-color: #f7f7f7;
+}
+
+.container__main{
+    width:80%;
+    margin:0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/* main__banner */
+.main__banner {
+    width:100%;
+    margin:10px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+/* banner__carousel */
+.banner__carousel{
+    width: 60%;
+    position: relative;
+    opacity: 100%;
+    display: flex;
+}
+
+.banner__carousel:hover{
+    opacity:95%;
+    transition: 0.4s;
+}
+/* arrows  */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width:auto;
+    margin-top: -22px;
+    padding: 16px;
+    color:white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6% ease;
+    border-radius: 0 3px 3px 0;
+    text-decoration: none !important;
+}
+
+.next {
+    right:0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover{
+    background-color: rgba(0,0,0,0.8);
+    text-decoration: none !important;
+    color:#fff;
+}
+
+.carousel-text{
+    position:absolute;
+    font-style: 15px;
+    padding: 8px 0px;
+    bottom: 28px;
+    color: #000;
+    background-color: #fff;
+    width:100%;
+    text-align:center;
+    text-transform:uppercase;
+    letter-spacing: 1.4px;
+}
+
+
+
+/* blocks */
+
+
+
+.banner__blocks {
+    width:35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.blocks-item{
+    width:80%;
+    height:45%;
+    opacity: 92%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.blocks-item:hover{
+    opacity:100%;
+    transition: .4s;
+    text-decoration: none;
+}
+
+.men__link{
+    background-image: url("/img/photos/sex__men.jpeg");
+    -moz-background-size: 100%; /* Firefox 3.6+ */
+    -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+    -o-background-size: 100%; /* Opera 9.6+ */
+    background-size: 100%;
+}
+
+.women__link{
+    background-image: url("/img/photos/sex__women.jpeg");
+    -moz-background-size: 100%; /* Firefox 3.6+ */
+    -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+    -o-background-size: 100%; /* Opera 9.6+ */
+    background-size: 100%;
+}
+
+.blocks-text {
+    padding:5px 14px;
+    font-size: 12px;
+    background-color: #ffffff;
+    color:#000000;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
+.blocks-item:hover .blocks-text{
+    transform: scale(1.35);
+    transition: 0.4s;
+}
+/* sale block */
+
+
+.main__sale{
+    margin:20px 0px;
+    max-width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+    color:#ffffff;
+    height:200px;
+}
+
+.sale__block{
+    padding: 8px 0px;
+    width:100%;
+    border-top: 2px solid #e2e2e2;
+    border-bottom: 2px solid #e2e2e2;
+    text-transform: uppercase;
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: 6px;
+    text-align: center;
+}
+
+/* brands block */
+
+
+
+/* adaptation */
+@media(max-width:576px){
+    .main__banner{
+        display:flex;
+        flex-direction: column;
+    }
+    .banner__carousel{
+        width:96%;
+        margin:0 auto;
+    }
+    .banner__blocks {
+        width:96%;
+        margin:10px auto;
+        height:140px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .blocks-item{
+        width:45%;
+        height:100%;
+        opacity: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+    }
+    
+}

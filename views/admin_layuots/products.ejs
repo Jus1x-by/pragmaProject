@@ -1,0 +1,58 @@
+<%- include ('header') -%>
+    
+
+<div class="container__table">
+
+    <a href="/admin/products/add-product" class="table__add"><img src="/img/icons/plus.svg" alt="Добавить"></a>
+    <% if(count > 0) { %>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Brand</th>
+                <th>Description</th>
+                <th>Sizes</th>
+                <th>Season</th>
+                <th>Men/Women</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Stock</th>
+                <th>Article</th>
+                <th>Product Image</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% products.forEach(  function(product) { %>
+            <tr>
+                <td><%= product.title %></td>
+                <td><%= product.brand %></td>
+                <td><%= product.description %></td>
+                <!-- <td><%= product.sizes %></td> -->
+                <td><%= product.season %></td>
+                <td><%= product.sex %></td>
+                <td><%= product.price %></td>
+                <td><%= product.category %></td>
+                <td><%= product.stock %></td>
+                <td><%= product.article %></td>
+                <td>
+                    <%  if(product.image == "") { %>
+                        <img src="/img/photos/products/noimage.png" alt="">
+                    <% } else { %>
+                        <img src="img/photos/products/<%= product._id %>/<%= product.image %>" alt="">
+                    <% } %>
+                </td>
+                <td><a href="/admin/products/edit-product/<%= product._id %>">Edit</a></td>
+                <td><a href="/admin/products/delete-product/<%= product._id %>">Delete</a></td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    <% } else { %>
+        <h3> Нет продуктов </h3>
+    <% } %>
+</div>
+
+<%- include ('footer') -%>

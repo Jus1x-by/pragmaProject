@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add-product</title>
+</head>
+<body>
+    <a href="/admin/products">Вернуться к товарам</a>
+    <form method="post" action="/admin/products/add-product" enctype="multipart/form-data">
+        <label for="">Title</label>
+        <input type="text" name="title" value="<%= title %>" placeholder="Title" required>
+        <br><br>
+        <label for="">description</label>
+        <textarea name="description" id="" cols="30" rows="10" placeholder="Description" required><%= description %></textarea>
+        <br><br>
+        <label for="">Article</label>
+        <input type="text" name="article" value="<%= article %>" placeholder="Article" required>
+        <br><br>
+        <label for="">Sex</label>
+        <select name="sex">
+            <option value="<%= sex  %>">men</option>
+            <option value="<%= sex  %>">women</option>
+        </select>
+        <label for="">Price</label>
+        <input type="number" name="price" value="<%= price %>" placeholder="price" required>
+        <br><br>
+        <label for="">Season</label>
+        <select name="season">
+            <option value="winter">Зима</option>
+            <option value="summer">Лето</option>
+            <option value="demiseason">Демисезон</option>
+            <option value="multi">Мульти</option>
+        </select>
+        <label for="">Category</label>
+        <select name="category">
+            <% categories.forEach( (cat) => { %>
+                <option value="<%= cat.slug %>"><%= cat.title %> </option>
+            <% }); %>
+        </select>
+        <select name="brand">
+            <% brands.forEach(brand => { %>
+                <option value="<%= brand.slug %>"><%= brand.title %> </option>
+            <% }) %>
+        </select>
+
+        <button>Submit</button>    
+    </form>
+</body>
+</html>
