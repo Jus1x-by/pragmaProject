@@ -1,21 +1,22 @@
-<main>
-    <div class="calatolg__container">
-        <div class="catalog__navbar">
-            <div class="navbar__filters">
+    <main>
+        <div class="calatolg__container">
+            <div class="catalog__navbar">
                 
             </div>
-            <div class="navbar__sort">
-                <ul>
-                    <li>From cheap to expensive</li>
-                    <li>From expensive to cheap</li>
-                    <li>Most popular</li>
-                </ul>
+            <div class="catalog__products">
+                <% products.forEach(product => { %>
+                    <a href="/catalog/" class="product__link">
+                        <div class="product__image"><img style="width:100%; height:95%" src="../public/img/photos/sex__women.jpeg" alt="name"></div>
+                        <div class="product__info">
+                            <div class="product__info-name">
+                                <%= product.brand + ' ' + product.title %> 
+                            </div>
+                            <div class="product__info-price">
+                                <%= product.price %>
+                            </div>
+                        </div>
+                    </a>
+                <% }) %>
             </div>
         </div>
-        <div class="catalog__products">
-            <div class="product">
-
-            </div>
-        </div>
-    </div>
-</main>
+    </main>

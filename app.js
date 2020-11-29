@@ -41,40 +41,7 @@ app.use(
   })
 );
 
-
-app.use(expressValidation({
-  errorFormatter: function (param, msg, value) {
-      var namespace = param.split('.')
-              , root = namespace.shift()
-              , formParam = root;
-
-      while (namespace.length) {
-          formParam += '[' + namespace.shift() + ']';
-      }
-      return {
-          param: formParam,
-          msg: msg,
-          value: value
-      };
-  },
-  customValidators: {
-      isImage: function (value, filename) {
-          var extension = (path.extname(filename)).toLowerCase();
-          switch (extension) {
-              case '.jpg':
-                  return '.jpg';
-              case '.jpeg':
-                  return '.jpeg';
-              case '.png':
-                  return '.png';
-              case '':
-                  return '.jpg';
-              default:
-                  return false;
-          }
-      }
-  }
-}));
+app.use(expressValidation());
 
 // Вывод сообщений
 app.use(require('connect-flash')());
@@ -84,15 +51,17 @@ app.use(function (req, res, next) {
 });
 
 // настройка путей
-const userPages = require('./routes/userPages.js');
 const adminCategories = require('./routes/adminCategory.js');
-const adminProducts = require('./routes/adminProducts.js');
 const adminBrands = require('./routes/adminBrands');
+const adminProducts = require('./routes/adminProducts.js');
+const userPages = require('./routes/userPages.js');
+const userCatalog = require('./routes/userCatalog.js');
 
+app.use('/admin/categories', adminCategories);
 app.use('/admin/brands', adminBrands);
 app.use('/admin/products', adminProducts);
-app.use('/admin/categories', adminCategories);
 app.use('/', userPages);
+app.use('/catalog', userCatalog);
 
 // Запуск сервера
 const port = 3000;

@@ -9,7 +9,7 @@ const Category = require('../models/category');
  * GET category index
  */
 router.get('/', (req, res) => {
-    Category.find(function(err, categories){
+    Category.find( (err, categories) => {
         if (err) return console.log(err);
         res.render('./admin_layuots/categories', {
             categories: categories

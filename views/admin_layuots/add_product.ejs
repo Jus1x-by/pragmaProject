@@ -17,10 +17,10 @@
         <label for="">Article</label>
         <input type="text" name="article" value="<%= article %>" placeholder="Article" required>
         <br><br>
-        <label for="">Sex</label>
+        <label for="">Sex</label>   
         <select name="sex">
-            <option value="<%= sex  %>">men</option>
-            <option value="<%= sex  %>">women</option>
+            <option value="men">men</option>
+            <option value="women">women</option>
         </select>
         <label for="">Price</label>
         <input type="number" name="price" value="<%= price %>" placeholder="price" required>
@@ -43,7 +43,8 @@
                 <option value="<%= brand.slug %>"><%= brand.title %> </option>
             <% }) %>
         </select>
-
+        <!-- <input type="file" name="img">
+        <img src="#" alt="Картинка" id="imgPreview"> -->
         <button>Submit</button>    
     </form>
 </body>

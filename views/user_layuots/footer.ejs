@@ -26,26 +26,16 @@
                     </div>
                     <div class="container__categories">
                         <div class="categories__list">
-                            <li class="li-item">Обувь</li>
-                            <li class="li-item"><a href="" class="item-link">Кроссовки</a></li>
-                            <li class="li-item"><a href="" class="item-link">Кеды</a></li>
-                            <li class="li-item"><a href="" class="item-link">Мокасины</a></li>
-                            <li class="li-item"><a href="" class="item-link">Топсайдеры</a></li>
-                            <li class="li-item"><a href="" class="item-link">Слипоны</a></li>
-                            <li class="li-item"><a href="" class="item-link">Эспадрильки</a></li>
-                            <li class="li-item"><a href="" class="item-link">Полуботинки</a></li>
-                            <li class="li-item"><a href="" class="item-link">Сандали</a></li>
+                            <li class="li-item">Категории</li>
+                            <% categories.forEach( category => { %>
+                                <li class="li-item"><a href="" class="item-link"><%= category.title %></a></li>
+                            <% }) %>
                         </div>
                         <div class="categories__list">
                             <li class="li-item">Бренды</li>
-                            <li class="li-item"><a href="" class="item-link">Adidas</a></li>
-                            <li class="li-item"><a href="" class="item-link">Fila</a></li>
-                            <li class="li-item"><a href="" class="item-link">Reebok</a></li>
-                            <li class="li-item"><a href="" class="item-link">CAT</a></li>
-                            <li class="li-item"><a href="" class="item-link">Palladium</a></li>
-                            <li class="li-item"><a href="" class="item-link">Asics</a></li>
-                            <li class="li-item"><a href="" class="item-link">Nike</a></li>
-                            <li class="li-item"><a href="" class="item-link">Kappa</a></li>
+                            <% brands.forEach( brand => { %>
+                                <li class="li-item"><a href="" class="item-link"><%= brand.title %> </a></li>
+                            <% }) %>
                         </div>
                         <div class="categories__list">
                             <li class="li-item">Магазин</li>

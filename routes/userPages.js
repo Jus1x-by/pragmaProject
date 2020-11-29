@@ -3,7 +3,6 @@ const router = express.Router();
 
 const Category = require('../models/category');
 const Brand = require('../models/brand');
-const Product = require('../models/product');
 
 let categoryCash = Category.find( (err, categories) =>{
     if (err) console.log(err);
@@ -42,17 +41,5 @@ router.get('/contacts', (req, res) => {
             brands: brandsCash
         })
 })
-
-router.get('/catalog', (req,res) => {
-    Product.find( (err, products) => {
-        if (err) console.log(err);
-        res.render('catalog', {
-            products: products,
-            categories: categoryCash,
-            brands: brandsCash
-        })
-    })
-})
-
 
 module.exports = router;
