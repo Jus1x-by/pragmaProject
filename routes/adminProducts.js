@@ -4,9 +4,12 @@ const mkdirp = require('mkdirp');
 const fs = require('fs-extra');
 const resizeImg = require('resize-img');
 
+path = __dirname.substring(0, 26);
+
 const Product = require('../models/product');
 const Category = require('../models/category');
 const Brand = require('../models/brand');
+const product = require('../models/product');
 
 // GET product index
 
@@ -52,7 +55,7 @@ router.get('/add-product', (req,res) =>{
                 article: article,
                 stock: stock,
                 sex: sex,
-                categories: categories
+                categories: categories,
             });
         })
     });
@@ -60,15 +63,17 @@ router.get('/add-product', (req,res) =>{
 
 router.post('/add-product', (req, res) => {
 
-    // let imageFile = typeof req.files.image !== "undefined" ? req.files.image.name : "";
-
     // req.checkBody('image', 'You must upload an image').isImage(imageFile);
+
+    if (!req.files || Object.keys(req.files).length === 0) {
+        return res.status(400).send('No files were uploaded.');
+      }
     
+    let imageFile = req.files.image;    
     let title = req.body.title;
     let description = req.body.description;
     let article = req.body.article;
     let sex = req.body.sex;
-    console.log('Sex param : '+sex);
     let price = req.body.price;
     let season = req.body.season;
     let category = req.body.category;
@@ -88,7 +93,6 @@ router.post('/add-product', (req, res) => {
                 });
             }
             else {
-                console.log(sex);
                 let product = new Product({
                     title: title,
                     description: description,
@@ -98,38 +102,70 @@ router.post('/add-product', (req, res) => {
                     season: season,
                     category: category,
                     stock: 0,
-                    brand: brand
-                    // image: imageFile
+                    brand: brand,
+                    image: imageFile.name
                 });
                 product.save( (err) => {
-                    if (err) console.log(err);
+                    if (err)
+                        return console.log(err);
 
-                    // mkdirp('public/img/photos/products/'+product._id, (err) => {
-                    //     return console.log(err);
-                    // })
+                    mkdirp(path + '/public/product_images/'+product._id).then((err) => {
+                        if (imageFile != ""){
+                            let productImage = req.files.image;
+                            
+                            productImage.mv(path + '/public/product_images/' + product._id + '/' + productImage.name, (err) => {
+                                return console.log(err);
+                            })
+                        }
+                        return console.log(err);
+                    });
 
-                    // mkdirp('public/img/photos/products/'+product._id+'/gallery', (err) => {
-                    //     return console.log(err);
-                    // })
+                    mkdirp(path + '/public/product_images/' + product._id + '/gallery').then((err) => {
+                        return console.log(err);
+                    });
 
-                    // mkdirp('public/img/photos/products/'+product._id+'gallery/thumbs', (err) => {
-                    //     return console.log(err);
-                    // })
+                    mkdirp(path + '/public/product_images/' + product._id + '/gallery/thumbs').then((err) => {
+                        return console.log(err);
+                    });
 
-                    // if(imageFile != ""){
-                    //     let productImage = req.files.image;
-                    //     let path = 'public/img/photos/products/'+product._id+'/' + imageFile;
-                    
-                    //     productImage.mv(path, (err)=>{
-                    //         return console.log(err);
-                    //     })
-                    // }
+                    if (imageFile != "") {
+                        var productImage = req.files.image;
+
+                        productImage.mv('/public/product_images/' + product._id + '/' + imageFile.name,  (err) => {
+                            return console.log(err);
+                        });
+                    }
 
                     res.redirect('/admin/products');
-                });
+                })
             }
         });
     }
+
+});
+
+
+
+/*
+    GET delete product
+*/
+
+router.get('/delete-product/:id', (req, res) => {
+
+    let id = req.params.id;
+    let pathRm = path + '/public/product_images/' + id;
+
+    fs.remove(pathRm, (err) => {
+        if (err) {
+            console.log(err);
+        } else {
+            Product.findByIdAndRemove(id, (err) => {
+                console.log(err);
+            });
+            
+            res.redirect('/admin/products');
+        }
+    });
 
 });
 
