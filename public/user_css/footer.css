@@ -122,7 +122,11 @@
     width:18px;
 }
 
-@media(max-width:576px){
+@media(max-width:768px){
+    .top__container,
+    .bottom__container {
+        width:95%;
+    }
     .top__footer{
         display: none;
     }

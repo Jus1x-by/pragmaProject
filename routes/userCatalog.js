@@ -15,6 +15,11 @@ let brandsCash = Brand.find ( (err, brands) => {
     brandsCash = brands;
 })
 
+/*
+
+            CATALOG GET
+
+*/
 router.get('/', (req, res) => {
     Product.find( (err, products) => {
         if (err) console.log(err)
@@ -27,5 +32,35 @@ router.get('/', (req, res) => {
     
 })
 
+/*
+
+            CATALOG/MEN GET
+
+*/
+router.get('/men', (req, res) => {
+
+    Product.find( (err, products) => {
+        if (err) console.log(err)
+        res.render('./user_layuots/mencatalog', {
+            products: products,
+            brands: brandsCash,
+            categories: categoryCash
+        })
+    })
+    
+})
+
+router.get('/women', (req, res) => {
+
+    Product.find( (err, products) => {
+        if (err) console.log(err)
+        res.render('./user_layuots/womencatalog', {
+            products: products,
+            brands: brandsCash,
+            categories: categoryCash
+        })
+    })
+    
+})
 
 module.exports = router;

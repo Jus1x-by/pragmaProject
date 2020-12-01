@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women</title>
+    <link rel="stylesheet" href="/user_css/">    <link rel="stylesheet" href="/user_css/header.css">
+    <link rel="stylesheet" href="/user_css/footer.css">
+    <link rel="stylesheet" href="/user_css/part_catalog.css">
+    <link rel="shortcut icon" href="/img/icons/p.png" type="image/png">
+</head>
+<body>
+    <%- include ('header') -%>
+    <main>
+        <div class="calatolg__container">
+            <div class="catalog__navbar">
+                
+            </div>
+            <div class="catalog__products">
+                <% products.forEach(product => { %>
+                    <% if (product.sex == "women") { %>
+                        <a href="/catalog/<%= product.article %>" class="product__link">
+                            <div class="product__image"><img class="image-pic" src="/product_images/<%= product._id %>/<%= product.image %>" alt="Обувь"></div>
+                            <div class="product__info">
+                                <div class="product__info-name">
+                                    <%= product.brand + ' ' + product.title %> 
+                                </div>
+                                <div class="product__info-price">
+                                    <%= product.price %>$
+                                </div>
+                            </div>
+                        </a>
+                    <% } %>
+                <% }) %>
+            </div>
+        </div>
+    </main>
+    <%- include ('footer') -%>
+</body>
+</html>

@@ -112,7 +112,7 @@ router.post('/add-product', (req, res) => {
                     mkdirp(path + '/public/product_images/'+product._id).then((err) => {
                         if (imageFile != ""){
                             let productImage = req.files.image;
-                            
+
                             productImage.mv(path + '/public/product_images/' + product._id + '/' + productImage.name, (err) => {
                                 return console.log(err);
                             })
@@ -159,7 +159,7 @@ router.get('/delete-product/:id', (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            Product.findByIdAndRemove(id, (err) => {
+            Product.findByIdAndDelete(id, (err) => {
                 console.log(err);
             });
             

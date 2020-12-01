@@ -5,14 +5,14 @@
             </div>
             <div class="catalog__products">
                 <% products.forEach(product => { %>
-                    <a href="/catalog/" class="product__link">
+                    <a href="/catalog/<%= product.article %>" class="product__link">
                         <div class="product__image"><img class="image-pic" src="/product_images/<%= product._id %>/<%= product.image %>" alt="name"></div>
                         <div class="product__info">
                             <div class="product__info-name">
                                 <%= product.brand + ' ' + product.title %> 
                             </div>
                             <div class="product__info-price">
-                                <%= product.price %>
+                                <%= product.price %>$
                             </div>
                         </div>
                     </a>
