@@ -13,10 +13,10 @@ const product = require('../models/product');
 
 // GET product index
 
-router.get('/', function (req, res) {
+router.get('/', (req, res) => {
     let count;
 
-    Product.count(function (err, c) {
+    Product.count( (err, c) => {
         count = c;
     });
 
@@ -40,7 +40,6 @@ router.get('/add-product', (req,res) =>{
     let price = "";
     let season = "";
     let sex = "";
-    let description = "";
     let article = "";
     let stock = "";
 
@@ -50,7 +49,6 @@ router.get('/add-product', (req,res) =>{
                 title: title,
                 price: price,
                 season: season,
-                description: description,
                 brands: brands,
                 article: article,
                 stock: stock,
@@ -71,13 +69,13 @@ router.post('/add-product', (req, res) => {
     
     let imageFile = req.files.image;    
     let title = req.body.title;
-    let description = req.body.description;
     let article = req.body.article;
     let sex = req.body.sex;
     let price = req.body.price;
     let season = req.body.season;
     let category = req.body.category;
     let brand = req.body.brand;
+    let stock = req.body.stock;
 
     const errors = req.validationErrors();
 
@@ -95,16 +93,16 @@ router.post('/add-product', (req, res) => {
             else {
                 let product = new Product({
                     title: title,
-                    description: description,
                     article: article,
                     sex: sex,
                     price: price,
                     season: season,
                     category: category,
-                    stock: 0,
+                    stock: stock,
                     brand: brand,
                     image: imageFile.name
                 });
+                console.log(imageFile.name);
                 product.save( (err) => {
                     if (err)
                         return console.log(err);

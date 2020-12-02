@@ -63,4 +63,25 @@ router.get('/women', (req, res) => {
     
 })
 
+router.get('/product/:id', (req,res) => {
+
+    Product.findById( req.params.id, (err, product) =>{
+        if(err) return console.log(err);
+        res.render('product', {
+            brand: product.brand,
+            price: product.price,
+            article: product.article,
+            title: product.title,
+            category: product.category,
+            sex: product.sex,
+            stock: product.stock,
+            image: product.image,
+            id: product._id,
+            categories: categoryCash,
+            brands: brandsCash
+        })
+    })
+
+})
+
 module.exports = router;

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <title>Pragma</title>
+    <link rel="stylesheet" href="/user_css/header.css">
+    <link rel="stylesheet" href="/user_css/footer.css">
+    <link rel="stylesheet" href="/user_css/part_product.css">
+    <link rel="shortcut icon" href="/img/icons/p.png" type="image/png">
+</head>
+<body>
+    <%- include ('user_layuots/header') -%> 
+    <main>
+        <div class="product__container">
+            <div class="product__gallery">
+                <div class="gallery-item">
+                    <img src="/product_images/<%= id %>/<%= image %>" style="width:100%" alt="<%= title %>">
+                </div>
+                
+                <a class="prev" onclick="addSlide(-1)">&#10094</a>
+                <a class="next" onclick="addSlide(1)">&#10095</a>
+            </div>
+            <div class="product__infobar">
+                <div class="infobar__block">
+                    <div class="product__name"><span class="product__brand"><%= brand %></span>  <%= title %>  (<%= article %> )</div>
+                    <div class="product__category__sex"><%= category %> <%= sex %> </div>
+                    <div class="product__article"><span class="article__bold">Артикул</span> <%= article %></div>
+                </div>
+                <div class="infobar__block">
+                    <div class="product__price"><span class="price__bold">Цена</span> <span class="price__value"><%= price %>$</span></div>
+                    <div class="product__price__sale">При оплате через приложение "Оплати" скидка 5%</div>
+                    <div class="product__delivery"><a href="/delivery" class="product__delivery__link">Информация о доставке</a></div>
+                    <% if(stock == 0) { %>
+                        <div class="product__stock"> Товар закончился</div> 
+                    <% } else { %>
+                        <div class="product__stock"> Товар есть в наличии</div>
+                    <% } %>  
+                </div>
+                <button class="product__addtocart">Добавить в корзину</button>
+            </div>
+        </div>
+    </main>
+    <%- include ('user_layuots/footer') -%> 
+    <script src="/js/slider_product.js"></script>
+</body>
+</html>

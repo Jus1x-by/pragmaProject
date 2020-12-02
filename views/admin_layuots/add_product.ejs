@@ -8,45 +8,45 @@
 <body>
     <a href="/admin/products">Вернуться к товарам</a>
     <form method="post" action="/admin/products/add-product" enctype="multipart/form-data">
-        <label for="">Title</label>
+        <label for="">Название</label>
         <input type="text" name="title" value="<%= title %>" placeholder="Title" required>
         <br><br>
-        <label for="">description</label>
-        <textarea resize="none" name="description" id="" cols="30" rows="10" placeholder="Description" required><%= description %></textarea>
-        <br><br>
-        <label for="">Article</label>
+        <label for="">Артикул</label>
         <input type="text" name="article" value="<%= article %>" placeholder="Article" required>
         <br><br>
         <label for="">Sex</label>   
         <select name="sex">
-            <option value="men">men</option>
-            <option value="women">women</option>
+            <option value="мужские">мужские</option>
+            <option value="женские">женские</option>
         </select>
         <label for="">Price</label>
         <input type="number" name="price" value="<%= price %>" placeholder="price" required>
         <br><br>
-        <label for="">Season</label>
+        <label for="">Сезон</label>
         <select name="season">
             <option value="winter">Зима</option>
             <option value="summer">Лето</option>
             <option value="demiseason">Демисезон</option>
             <option value="multi">Мульти</option>
         </select>
-        <label for="">Category</label>
+        <label for="">Категория</label>
         <select name="category">
             <% categories.forEach( (cat) => { %>
                 <option value="<%= cat.slug %>"><%= cat.title %> </option>
             <% }); %>
         </select>
+        <label for="">Бренд</label>
         <select name="brand">
-            <% brands.forEach(brand => { %>
+            <% brands.forEach( (brand) => { %>
                 <option value="<%= brand.slug %>"><%= brand.title %> </option>
             <% }) %>
         </select>
+        <label for="">Количество пар</label>
+        <input type="number" name="stock" value="<%= stock %>" placeholder="кол-во" required>
         <input type="file" name="image" id="img">
         <img src="#" alt="Картинка" id="imgPreview">
 
-        <button>Submit</button>    
+        <button>Добавить</button>    
     </form>
     <script src="/js/jquery.js"></script>
     <script>

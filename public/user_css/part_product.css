@@ -1,0 +1,240 @@
+main {
+    padding:30px 0;
+}
+
+.product__container {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* SLIDER STYLES */
+
+.product__gallery{
+    width:50%;
+    position: relative;
+}
+
+.gallery-item {
+    object-fit: cover;
+    width:100%;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width:auto;
+    margin-top: -22px;
+    padding: 16px;
+    color:black;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6% ease;
+    border-radius: 0 3px 3px 0;
+    text-decoration: none !important;
+}
+
+.next {
+    right:0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover{
+    background-color: rgba(231, 218, 218, 0.8);
+    text-decoration: none !important;
+    color:black;
+}
+
+/* INFOBAR STYLES */
+
+.product__infobar{
+    margin: 10px 0px;
+    width:30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.infobar__block:after{
+    display: block;
+    content: "";
+    width:100%;
+    height:2px;
+    background-color: #f2f2f2;
+    margin: 8px 0 20px;
+}
+
+/* FIRST INFO BLOCK */
+
+.product__name{
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
+
+.product__brand {
+    text-transform: uppercase;
+}
+
+.product__category__sex{
+    font-size: 13px;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
+
+.product__article {
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.article__bold{
+    font-size: 16px;
+    font-weight: 900;
+}
+
+/* SECOND INFO BLOCK */
+.product__price{
+    font-size: 18px;
+    color: darkgray;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.price__bold {
+    font-weight: 900;
+    color: #000;
+}
+
+.price__value:hover {
+    color:gray;
+    cursor: default;
+}
+
+.product__price__sale{
+    font-size: 15px;
+    font-style: oblique;
+    margin-bottom: 10px;
+}
+
+.product__delivery{
+    font-size: 13px;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.product__delivery__link{
+    color: #000;
+}
+
+.product__stock{
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.product__addtocart{
+    width:100%;
+    height:3rem;
+    font-size:16px;
+    color: #f2f2f2;
+    background-color: #000;
+    border:none;
+    transition: .4s;
+}
+
+.product__addtocart:hover{
+    color:#fff;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px gray;
+    transition: .4s;
+}
+
+
+
+
+@media(max-width:1300px){
+    .product__container {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    
+    /* SLIDER STYLES */
+    
+    .product__gallery{
+        width:40%;
+        position: relative;
+    }
+    
+    .gallery-item {
+        object-fit: cover;
+        width:100%;
+    }
+}
+
+
+
+@media(max-width:766px){
+    .product__container {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product__infobar{
+        margin: 30px 0px;
+        width:90%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .infobar__block:after{
+        display: block;
+        content: "";
+        width:100%;
+        height:2px;
+        background-color: #f2f2f2;
+        margin: 8px 0 20px;
+    }
+
+    /* SLIDER STYLES */
+    
+    .product__gallery{
+        width:90%;
+        position: relative;
+    }
+    
+    .gallery-item {
+        object-fit: cover;
+        width:100%;
+    }
+
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width:auto;
+        margin-top: -22px;
+        padding: 9px;
+        color:black;
+        font-weight: bold;
+        font-size: 12px;
+        transition: 0.6% ease;
+        border-radius: 0 3px 3px 0;
+        text-decoration: none !important;
+    }
+    
+    .next {
+        right:0;
+        border-radius: 3px 0 0 3px;
+    }
+
+}

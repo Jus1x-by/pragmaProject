@@ -18,7 +18,7 @@
             </div>
             <div class="catalog__products">
                 <% products.forEach(product => { %>
-                    <% if (product.sex == "women") { %>
+                    <% if (product.sex == "женские") { %>
                         <a href="/catalog/<%= product.article %>" class="product__link">
                             <div class="product__image"><img class="image-pic" src="/product_images/<%= product._id %>/<%= product.image %>" alt="Обувь"></div>
                             <div class="product__info">

@@ -104,7 +104,7 @@ router.post('/edit-category/:id', (req, res) => {
         })
     }
     else {
-        Category.findOne({slug: slug, _id : { '$ne' : id} }, function (err, category){
+        Category.findOne({slug: slug, _id : { '$ne' : id} }, (err, category) => {
             if (category) {
                 res.render('./admin_layuots/edit_category', {
                     title: title,
@@ -131,7 +131,7 @@ router.post('/edit-category/:id', (req, res) => {
 
 router.get('/delete-category/:id', (req,res) => {
 
-    Category.findByIdAndRemove(req.params.id, function (err, category) {
+    Category.findByIdAndRemove(req.params.id, (err, category) => {
         if(err) return console.log(err);
 
         res.redirect('/admin/categories/');

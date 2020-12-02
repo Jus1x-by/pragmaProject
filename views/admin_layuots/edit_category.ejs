@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit-cat</title>
+    <link rel="shortcut icon" href="/img/icons/p.png" type="image/png">
+    <link rel="stylesheet" href="/admin_css/add_catbrand.css">
 </head>
 <body>
     <a href="/admin/categories">Вернуться к категориям</a>
     <form method="post" action="/admin/categories/edit-category/<%= id %>">
-        <label for="">Title</label>
-        <input type="text" name="title" value="<%= title %>" placeholder="New title" required>
+        <label for="">Категория</label>
+        <input type="text" name="title" value="<%= title %>" placeholder="Новое название" required>
         <br><br>
-        <button>Submit</button>    
+        <button>Изменить</button>    
     </form>
 </body>
 </html>

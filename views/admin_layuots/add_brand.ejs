@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add-brand</title>
+    <link rel="shortcut icon" href="/img/icons/p.png" type="image/png">
+    <link rel="stylesheet" href="/admin_css/add_catbrand.css">
 </head>
 <body>
-    <a href="/admin/brands">Вернуться к категориям</a>
+    <a href="/admin/brands">Вернуться к брендам</a>
     <form method="post" action="/admin/brands/add-brand">
-        <label for="">Title</label>
-        <input type="text" name="title" value="<%= title %>" placeholder="Title" required>
+        <label for="">Бренд</label>
+        <input type="text" name="title" value="<%= title %>" placeholder="Название" required>
         <br><br>
-        <button>Submit</button>    
+        <button>Добавить</button>    
     </form>
 </body>
 </html>
