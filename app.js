@@ -65,8 +65,7 @@ app.use('/', userPages);
 app.use('/catalog', userCatalog);
 
 // Запуск сервера
-const { PORT=3000, LOCAL_ADDRESS='0.0.0.0' } = process.env
-app.listen(PORT, LOCAL_ADDRESS, () => {
-  const address = app.address();
-  console.log('server listening at', address);
+const PORT = process.env.PORT || 80
+app.listen(PORT, () => {
+  console.log('server listening at ', PORT);
 });
