@@ -4,7 +4,7 @@
 
 .container__main{
     width:80%;
-    margin:0 auto;
+    margin:40px auto;
     display: flex;
     flex-direction: column;
 }
@@ -180,6 +180,14 @@
         margin:0 auto;
     }
     .banner__blocks {
+        width:96%;
+        margin:10px auto;
+        height:140px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .banner__blocks__second {
         width:96%;
         margin:10px auto;
         height:140px;

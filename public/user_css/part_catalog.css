@@ -60,3 +60,23 @@
     font-weight: 700;
 }
 
+@media(max-width:768px){
+    .catalog__products {
+        margin:0 auto;
+        width:76%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}
+
+@media(max-width:576px){
+    .catalog__products {
+        margin:0 auto;
+        width:90%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+}

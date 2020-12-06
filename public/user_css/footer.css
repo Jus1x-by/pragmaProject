@@ -106,7 +106,6 @@
 .container__socialmedia{
     display: flex;
     flex-direction: row;
-
 }
 
 .soc__icon:first-child{
@@ -132,5 +131,21 @@
     }
     .bottom__footer{
         margin-top:20px;
+        position: fixed;
+        bottom:0;
+        left:0;
+        width:100%;
+    }
+}
+
+@media(max-width: 576px) {
+    .container__telephone:last-child {
+        display: none;
+    }
+    .list-item {
+        display:none;
+    }
+    .list-item:first-child{
+        display: flex;
     }
 }

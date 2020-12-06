@@ -44,7 +44,11 @@
                         <div class="product__stock"> Товар есть в наличии</div>
                     <% } %>  
                 </div>
-                <button class="product__addtocart">Добавить в корзину</button>
+                <% if (stock != 0) { %>
+                    <button type="submit" class="product__addtocart">Добавить в корзину</button>
+                <% } else { %>
+                    <div class="product__addtocart__locked">Товар закончился</div>
+                <% } %>
             </div>
         </div>
     </main>
