@@ -28,13 +28,13 @@
                         <div class="categories__list">
                             <li class="li-item">Категории</li>
                             <% categories.forEach( category => { %>
-                                <li class="li-item"><a href="" class="item-link"><%= category.title %></a></li>
+                                <li class="li-item"><a href="/catalog/categories/<%= category.slug %>" class="item-link"><%= category.title %></a></li>
                             <% }) %>
                         </div>
                         <div class="categories__list">
                             <li class="li-item">Бренды</li>
                             <% brands.forEach( brand => { %>
-                                <li class="li-item"><a href="" class="item-link"><%= brand.title %> </a></li>
+                                <li class="li-item"><a href="/catalog/brands/<%= brand.slug  %>" class="item-link"><%= brand.title %> </a></li>
                             <% }) %>
                         </div>
                         <div class="categories__list">
@@ -57,9 +57,9 @@
                     </a>
                 </div>
                 <div class="container__socialmedia">
-                    <a href="#" class="soc__icon"><img src="/img/icons/instagram.svg" alt="instagram" class="soc-item"></a>
-                    <a href="#" class="soc__icon"><img src="/img/icons/vk.svg" alt="vkontakte" class="soc-item"></a>
-                    <a href="#" class="soc__icon"><img src="/img/icons/telegram.svg" alt="telegram" class="soc-item"></a>
+                    <a href="https://www.instagram.com" class="soc__icon"><img src="/img/icons/instagram.svg" alt="instagram" class="soc-item"></a>
+                    <a href="https://vk.com" class="soc__icon"><img src="/img/icons/vk.svg" alt="vkontakte" class="soc-item"></a>
+                    <a href="https://telegram.org" class="soc__icon"><img src="/img/icons/telegram.svg" alt="telegram" class="soc-item"></a>
                 </div>
             </div>
         </div>

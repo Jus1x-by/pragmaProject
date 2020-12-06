@@ -76,6 +76,7 @@ main {
 }
 
 .product__brand {
+    font-size: 19px;
     text-transform: uppercase;
 }
 

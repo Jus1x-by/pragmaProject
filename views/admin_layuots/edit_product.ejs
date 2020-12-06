@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add-product</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/basic.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/dropzone.css"/>
+    <script src="/js/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/dropzone.js"></script>
+</head>
+<body>
+    <a href="/admin/products">Вернуться к товарам</a>
+    <form method="post" action="/admin/products/add-product" enctype="multipart/form-data">
+        <label for="">Название</label>
+        <input type="text" name="title" value="<%= title %>" placeholder="Title" required>
+        <br><br>
+        <label for="">Артикул</label>
+        <input type="text" name="article" value="<%= article %>" placeholder="Article" required>
+        <br><br>
+        <label for="">Sex</label>   
+        <select name="sex">
+            <% if (sex == "мужские") { %>
+                <option value="мужские">мужские</option>
+                <option value="женские">женские</option>
+            <% } else { %>
+                <option value="женские">женские</option>
+                <option value="мужские">мужские</option>
+            <% } %>
+        </select>
+        <label for="">Price</label>
+        <input type="number" name="price" value="<%= price %>" placeholder="price" required>
+        <br><br>
+        <label for="">Сезон</label>
+        <select name="season">
+            <% if (season == "winter") { %>
+                <option value="winter">Зима</option>
+                <option value="summer">Лето</option>
+                <option value="demiseason">Демисезон</option>
+                <option value="multi">Мульти</option>
+            <% } else if(season == "summer") { %> 
+                <option value="summer">Лето</option>
+                <option value="winter">Зима</option>
+                <option value="demiseason">Демисезон</option>
+                <option value="multi">Мульти</option>
+            <% } else if(season == "demiseason") { %>
+                <option value="demiseason">Демисезон</option>
+                <option value="winter">Зима</option>
+                <option value="summer">Лето</option>
+                <option value="multi">Мульти</option>
+            <% } else { %>
+                <option value="multi">Мульти</option>
+                <option value="winter">Зима</option>
+                <option value="summer">Лето</option>
+                <option value="demiseason">Демисезон</option>
+            <% } %>
+            
+        </select>
+        <label for="">Категория</label>
+        <select name="category">
+            <option value="<%= category.slug %>"><%= category.title %> </option> 
+            <% categories.forEach( (cat) => { %>
+                <% if (cat.title != category.title) { %>
+                    <option value="<%= cat.slug %>"><%= cat.title %> </option>
+                <% } %>
+            <% }); %>
+        </select>
+        <label for="">Бренд</label>
+        <select name="brand">
+            <option value="<%= brand.slug %>"><%= brand.title %> </option>
+            <% brands.forEach( (brandItem) => { %>
+                <% if (brand.title != brandItem.title) { %>
+                    <option value="<%= brandItem.slug %>"><%= brandItem.title %> </option>
+                <% } %>
+            <% }) %>
+        </select>
+        <label for="">Количество пар</label>
+        <input type="number" name="stock" value="<%= stock %>" placeholder="кол-во" required>
+        <input type="file" name="image" id="img">
+        <img src="#" alt="Картинка" id="imgPreview">
+
+        <button>Редактировать</button>    
+    </form>
+
+
+<hr>
+<h3 class="page-header">Gallery</h3>
+
+<ul class="gallery">
+    <% galleryImages.forEach(  (image) => { %>
+        <% if (image != "thumbs") { %>
+        <li>
+            <img src="/product_images/<%= id %>/gallery/<%= image %>" alt="<%= title %>" width="100px" height="100px">&nbsp;
+            <a class="confirmDeletion" href="/admin/products/delete-image/<%= image %>?id=<%= id %>">delete</a>
+        </li>
+        <% } %>
+    <% }); %>
+</ul>
+
+        <form action="/admin/products/product-gallery/<%= id %>" method="post" enctype="multipart/form-data" class="dropzone" id="dropzoneForm">
+            <div class="fallback">
+                <input type="file" name="file" multiple>
+                <input type="submit" value="Upload">
+            </div>
+        </form>
+    <script>
+    
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                let reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    $("#imgPreview").attr('src', e.target.result).width(100).height(100);
+                }
+                
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        
+        $("#img").change( () => {
+            readURL(this);
+        });
+        
+        Dropzone.options.dropzoneForm = {
+        acceptedFiles: "image/*",
+        init: () => {
+            this.on("queuecomplete", file => {
+               setTimeout( () => {
+                location.reload()
+                }, 1000); 
+            });
+        }
+    }
+    </script>
+</body>
+</html>

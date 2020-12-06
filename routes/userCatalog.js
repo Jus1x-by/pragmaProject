@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const fs = require('fs-extra')
+
 
 const Category = require('../models/category');
 const Brand = require('../models/brand');
@@ -63,22 +65,77 @@ router.get('/women', (req, res) => {
     
 })
 
+/*
+    SORTED BY BRANDS
+*/
+
+
+router.get('/brands/:brand', (req, res) => {
+
+    let brand = req.params.brand
+
+    Product.find( (err, products) =>{
+        if (err) return console.log(err)
+
+        res.render('./user_layuots/brand', {
+            cond: brand,
+            products: products,
+            brands: brandsCash,
+            categories: categoryCash
+        })
+    })
+
+})
+
+
+/*
+    SORTED BY CATEGORIES
+*/
+
+
+router.get('/categories/:category', (req, res) => {
+
+    let cat = req.params.category
+
+    Product.find( (err, products) =>{
+        if (err) return console.log(err)
+
+        res.render('./user_layuots/category', {
+            cond: cat,
+            products: products,
+            brands: brandsCash,
+            categories: categoryCash
+        })
+    } )
+
+})
+
+
+
 router.get('/product/:id', (req,res) => {
 
-    Product.findById( req.params.id, (err, product) =>{
+    let productID = req.params.id;
+
+    Product.findById( productID, (err, product) =>{
         if(err) return console.log(err);
-        res.render('product', {
-            brand: product.brand,
-            price: product.price,
-            article: product.article,
-            title: product.title,
-            category: product.category,
-            sex: product.sex,
-            stock: product.stock,
-            image: product.image,
-            id: product._id,
-            categories: categoryCash,
-            brands: brandsCash
+        
+        let galleryDir = __dirname.substring(0, 26) + '/public/product_images/' + productID + '/gallery';
+
+        fs.readdir(galleryDir, (err, files) => {
+            res.render('product', {
+                brand: product.brand,
+                price: product.price,
+                article: product.article,
+                title: product.title,
+                category: product.category,
+                sex: product.sex,
+                stock: product.stock,
+                image: product.image,
+                galleryImages: files,
+                id: product._id,
+                categories: categoryCash,
+                brands: brandsCash
+            })
         })
     })
 

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> </title>   
+    <link rel="stylesheet" href="/user_css/header.css">
+    <link rel="stylesheet" href="/user_css/footer.css">
+    <link rel="stylesheet" href="/user_css/form.css">
+    <link rel="shortcut icon" href="/img/icons/p.png" type="image/png">
+</head>
+<body>
+    <%- include ('header') -%>
+    <main>
+        <div class="container__form">
+            <div class="form__title">Регистрация</div>
+            <form name="reg">
+                <div class="form__block">
+                    <input type="text" class="form__input" placeholder="E-mail">
+                    <input type="text" class="form__input" placeholder="Введите пароль">
+                    <input type="text" class="form__input" placeholder="Повторите пароль">
+                </div>
+                <button type="submit" class="form__button">Регистрация</button>
+            </form>
+        </div>
+    </main>
+    <%- include ('footer') -%>
+</body>
+</html>

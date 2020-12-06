@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-module.exports = path;
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const expressSession = require('express-session');
@@ -52,20 +51,26 @@ app.use(function (req, res, next) {
 });
 
 // настройка путей
-const adminCategories = require('./routes/adminCategory.js');
-const adminBrands = require('./routes/adminBrands');
-const adminProducts = require('./routes/adminProducts.js');
-const userPages = require('./routes/userPages.js');
-const userCatalog = require('./routes/userCatalog.js');
+const adminCategories = require('./routes/adminCategory.js')
+const adminBrands = require('./routes/adminBrands')
+const adminProducts = require('./routes/adminProducts.js')
+const userPages = require('./routes/userPages.js')
+const userCatalog = require('./routes/userCatalog.js')
+const users = require('./routes/users');
 
+
+
+app.use('/users', users);
 app.use('/admin/categories', adminCategories);
 app.use('/admin/brands', adminBrands);
 app.use('/admin/products', adminProducts);
 app.use('/', userPages);
 app.use('/catalog', userCatalog);
 
+
+
 // Запуск сервера
-const PORT = process.env.PORT || 80
+const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
-  console.log('server listening at ', PORT);
-});
+  console.log('Server started on port:  ', PORT)
+})
