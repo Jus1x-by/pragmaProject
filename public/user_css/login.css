@@ -1,6 +1,9 @@
+body {
+    background-color: #f2f2f2;
+}
+
 main {
-    width:100vw;
-    height:100vh;
+    margin:50px 0px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,7 +21,7 @@ form {
     flex-direction: column;
     padding: 25px 0px;
     width: 295px;
-    height: 200px;
+    height: 150px;
     border-radius: 25px;
 }
 
@@ -61,15 +64,45 @@ input::-webkit-input-placeholder { color:#000; }
     margin: 20px auto 0;
     padding: 12px 0;
     color:#000;
-    background-color: #ff5b00;
+    background-color: #fffde8;
     border-radius: 5px;
     border: none;
     font-size: 16px;
     cursor: pointer;
     outline: none;
     opacity:100%;
+    transition: .4s;
 }
 
 .form__button:hover {
-    opacity:95%;
+    color: #f7753e;
+    transition: .4s;
+}
+
+.login {
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    margin-top: -10px;
+    transition: .4s;
+}
+
+.login:hover {
+    text-decoration: none;
+    opacity: 90%;
+    color:#f7753e;
+    transition: .4s;
+}
+
+
+.error {
+    margin-top: 5px;
+    color: red;
+    font-size: 15px;
+    display:flex;
+    width:100%;
+    text-align: center;
 }

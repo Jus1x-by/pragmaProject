@@ -6,7 +6,7 @@
     <title><%= title %> </title>   
     <link rel="stylesheet" href="/user_css/header.css">
     <link rel="stylesheet" href="/user_css/footer.css">
-    <link rel="stylesheet" href="/user_css/register.css">
+    <link rel="stylesheet" href="/user_css/login.css">
     <link rel="shortcut icon" href="/img/icons/p.png" type="image/png">
 </head>
 <body>
@@ -18,14 +18,13 @@
                 <div class="form__block">
                     <input type="email" name="email" class="form__input" placeholder="E-mail">
                     <input type="password" name="password" class="form__input" placeholder="Введите пароль">
-                    <input type="password" name="password2" class="form__input" placeholder="Повторите пароль">
                     <% if (errors) { %>
                         <span class="error"><%= errors[0].msg %></span>
                     <% } %>
                 </div>
                 <button type="submit" class="form__button"><%= title %></button>
             </form>
-            <a href="/users/login" class="login">Уже есть аккаунт? Войти</a>
+            <a href="/users/register" class="login">Нет аккаунта? Создать</a>
         </div>
     </main>
     <%- include ('footer') -%>

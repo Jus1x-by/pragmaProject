@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const expressSession = require('express-session');
 const expressValidation = require("express-validator");
 const fileUpload = require('express-fileupload');
+const passport = require('passport')
 
 const config = require('./config/database');
 
@@ -36,27 +37,39 @@ app.use(bodyParser.raw());
 app.use(
   expressSession({
     secret: "somethingSecret",
-    saveUninitialized: false,
-    resave: false,
+    saveUninitialized: true,
+    resave: true,
   })
 );
+
+// Passport
+require('./config/passport.js')(passport)
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('*', (req,res,next) => {
+  //  res.locals.cart = req.session.cart;
+   res.locals.user = req.user || null;
+   next();
+});
 
 app.use(expressValidation());
 
 // Вывод сообщений
 app.use(require('connect-flash')());
-app.use(function (req, res, next) {
+app.use( (req, res, next) => {
     res.locals.messages = require('express-messages')(req, res);
     next();
 });
 
 // настройка путей
-const adminCategories = require('./routes/adminCategory.js')
-const adminBrands = require('./routes/adminBrands')
-const adminProducts = require('./routes/adminProducts.js')
-const userPages = require('./routes/userPages.js')
-const userCatalog = require('./routes/userCatalog.js')
-const users = require('./routes/users');
+const adminCategories = require('./routes/adminCategory.js');
+const adminBrands = require('./routes/adminBrands.js');
+const adminProducts = require('./routes/adminProducts.js');
+const userPages = require('./routes/userPages.js');
+const userCatalog = require('./routes/userCatalog.js');
+const users = require('./routes/users.js');
 
 
 
