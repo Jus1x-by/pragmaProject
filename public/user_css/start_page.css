@@ -4,7 +4,8 @@
 
 .container__main{
     width:80%;
-    margin:40px auto;
+    margin:0px auto;
+    padding: 20px 0px;
     display: flex;
     flex-direction: column;
 }
@@ -93,52 +94,69 @@
     align-items: flex-start;
 }
 
+.cat__link{
+    background-image: url("/img/photos/cat.jpg");
+    -moz-background-size: 100%; /* Firefox 3.6+ */
+    -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+    -o-background-size: 100%; /* Opera 9.6+ */
+    background-size: 100%;
+}
+
+.nike__link{
+    background-image: url("/img/photos/nike.jpg");
+    -moz-background-size: 100%; /* Firefox 3.6+ */
+    -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+    -o-background-size: 100%; /* Opera 9.6+ */
+    background-size: 100%;
+}
+
+.boots__link{
+    background-image: url("/img/photos/boots.jpg");
+    -moz-background-size: 100%; /* Firefox 3.6+ */
+    -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+    -o-background-size: 100%; /* Opera 9.6+ */
+    background-size: 100%;
+}
+
+.sneakers__link{
+    background-image: url("/img/photos/sneakers.jpg");
+    -moz-background-size: 100%; /* Firefox 3.6+ */
+    -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+    -o-background-size: 100%; /* Opera 9.6+ */
+    background-size: 100%;
+}
+
 .blocks-item{
     width:80%;
     height:45%;
     opacity: 92%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-decoration: none;
+    transition: all .2s ease-in-out;
 }
 
 .blocks-item:hover{
     opacity:100%;
-    transition: .4s;
     text-decoration: none;
 }
 
-.men__link{
-    background-image: url("/img/photos/sex__men.jpeg");
-    -moz-background-size: 100%; /* Firefox 3.6+ */
-    -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
-    -o-background-size: 100%; /* Opera 9.6+ */
-    background-size: 100%;
-}
-
-.women__link{
-    background-image: url("/img/photos/sex__women.jpeg");
-    -moz-background-size: 100%; /* Firefox 3.6+ */
-    -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
-    -o-background-size: 100%; /* Opera 9.6+ */
-    background-size: 100%;
+.blocks-item:hover > .blocks-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .blocks-text {
-    padding:5px 14px;
-    font-size: 12px;
-    background-color: #ffffff;
-    color:#000000;
+    background-color: rgba(0,0,0,0.4);
+    width:100%;
+    height:100%;
+    display: none;
+    font-size: 1rem;
+    color:#fff;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 1.2px;
 }
 
-.blocks-item:hover .blocks-text{
-    transform: scale(1.35);
-    transition: 0.4s;
-}
 /* sale block */
 
 

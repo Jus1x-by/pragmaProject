@@ -10,7 +10,6 @@ module.exports =  (passport) => {
         passwordField: 'password' },
         (username, password, done) => {
         User.findOne({email: username}, (err, user) => {
-            console.log("USER.FINDONE")
             if (err)
                 console.log(err);
 
@@ -24,7 +23,6 @@ module.exports =  (passport) => {
                     console.log(err);
 
                 if (isMatch) {
-                    console.log("Passwords match")
                     return done(null, user);
                 } else {
                     return done(null, false);

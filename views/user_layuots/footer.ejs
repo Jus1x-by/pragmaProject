@@ -28,22 +28,20 @@
                         <div class="categories__list">
                             <li class="li-item">Категории</li>
                             <% categories.forEach( category => { %>
-                                <li class="li-item"><a href="/catalog/categories/<%= category.slug %>" class="item-link"><%= category.title %></a></li>
+                                <li class="li-item"><a href="/catalog/categories/<%= category.slug %>" class="item-link"><%= category.title %> </a></li>
                             <% }) %>
                         </div>
                         <div class="categories__list">
                             <li class="li-item">Бренды</li>
                             <% brands.forEach( brand => { %>
-                                <li class="li-item"><a href="/catalog/brands/<%= brand.slug  %>" class="item-link"><%= brand.title %> </a></li>
+                                <li class="li-item"><a href="/catalog/brands/<%= brand.slug %>" class="item-link"><%= brand.title %> </a></li>
                             <% }) %>
                         </div>
                         <div class="categories__list">
                             <li class="li-item">Магазин</li>
-                            <li class="li-item"><a href="" class="item-link">Адреса</a></li>
-                            <li class="li-item"><a href="" class="item-link">Доставка</a></li>
-                            <li class="li-item"><a href="" class="item-link">Оплата</a></li>
-                            <li class="li-item"><a href="" class="item-link">Рассрочка</a></li>
-                            <li class="li-item"><a href="" class="item-link">Контакты</a></li>
+                            <li class="li-item"><a href="/delivery" class="item-link">Доставка</a></li>
+                            <li class="li-item"><a href="/payment" class="item-link">Оплата</a></li>
+                            <li class="li-item"><a href="/contacts" class="item-link">Контакты</a></li>
                         </div>
                     </div>
             </div>
@@ -51,9 +49,9 @@
         <div class="bottom__footer">
             <div class="bottom__container">
                 <div class="container__telephone">
-                    <a href="tel:+375259639803" class="phone">
+                    <a href="tel:+375258889899" class="phone">
                         <img src="/img/icons/phone-call.svg" alt="Телефон" class="phone-icon">
-                        <span class="phone-text">+375 (25) 963-98-03</span>
+                        <span class="phone-text">+375 (25) 888-98-99</span>
                     </a>
                 </div>
                 <div class="container__socialmedia">
@@ -64,3 +62,4 @@
             </div>
         </div>
     </footer>
+    <script src="/js/modalWindow.js"></script>

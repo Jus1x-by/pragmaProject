@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const tr = require('transliteration');
 
 // Get Brand model
 const Brand = require('../models/brand');
@@ -29,7 +30,8 @@ router.get('/add-brand', (req, res) => {
 router.post('/add-brand', (req, res) => {
 
     let title = req.body.title;
-    let slug = title.replace(/\s+/g, '-').toLowerCase();
+    let tmp = tr.slugify(title);
+    let slug = tr.transliterate(tmp);
 
     const errors = req.validationErrors();
 
@@ -77,7 +79,8 @@ router.get('/edit-brand/:id', (req, res) => {
 router.post('/edit-brand/:id', (req,res) => {
 
     let title = req.body.title;
-    let slug = title.replace(/\s+/g, '-').toLowerCase();
+    let tmp = tr.slugify(title);
+    let slug = tr.transliterate(tmp);
     let id = req.params.id;
 
     const errors = req.validationErrors();

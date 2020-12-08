@@ -10,7 +10,10 @@
     <link rel="shortcut icon" href="/img/icons/p.png" type="image/png">
 </head>
 <body>
-    <%- include ('user_layuots/header') -%> 
+    <%- include ('user_layuots/header') -%>
+    <div class="pop__up">
+        Товар добавлен!
+    </div>
     <main>
         <div class="product__container">
             <div class="product__gallery">
@@ -30,7 +33,7 @@
             </div>
             <div class="product__infobar">
                 <div class="infobar__block">
-                    <div class="product__name"><span class="product__brand"><%= brand %></span>  <%= title %>  (<%= article %> )</div>
+                    <div class="product__name"><span class="product__brand"><%= brand %></span>  <%= title %>  (<%= article %>)</div>
                     <div class="product__category__sex"><%= category %> <%= sex %> </div>
                     <div class="product__article"><span class="article__bold">Артикул</span> <%= article %></div>
                 </div>
@@ -45,7 +48,7 @@
                     <% } %>  
                 </div>
                 <% if (stock != 0) { %>
-                    <button type="submit" class="product__addtocart">Добавить в корзину</button>
+                    <a href="/cart/add/<%= id %>" class="product__addtocart">Добавить в корзину</a>
                 <% } else { %>
                     <div class="product__addtocart__locked">Товар закончился</div>
                 <% } %>

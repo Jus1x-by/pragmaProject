@@ -17,28 +17,32 @@ let brandsCash = Brand.find ( (err, brands) => {
 router.get('/', (req, res) => {
     res.render('index', {
             categories: categoryCash,
-            brands: brandsCash
+            brands: brandsCash,
+            cart: req.session.cart || "undefined"
         })    
 });
 
 router.get('/delivery', (req, res) => {
     res.render('delivery', {
             categories: categoryCash,
-            brands: brandsCash
+            brands: brandsCash,
+            cart: req.session.cart || "undefined"
         })
 });
 
 router.get('/payment', (req, res) => {
     res.render('payment', {
         categories: categoryCash,
-        brands: brandsCash
+        brands: brandsCash,
+        cart: req.session.cart || "undefined"
     })
 })
 
 router.get('/contacts', (req, res) => {
     res.render('contacts', {
             categories: categoryCash,
-            brands: brandsCash
+            brands: brandsCash,
+            cart: req.session.cart || "undefined"
         })
 })
 

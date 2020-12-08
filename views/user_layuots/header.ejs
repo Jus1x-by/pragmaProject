@@ -10,9 +10,9 @@
                     </ul>
                 </div>
                 <div class="container__telephone">
-                    <a href="tel:+375259639803" class="phone">
+                    <a href="tel:+375258889899" class="phone">
                         <img src="/img/icons/phone-call.svg" alt="Телефон" class="phone-icon">
-                        <span class="phone-text">+375 (25) 963-98-03</span>
+                        <span class="phone-text">+375 (25) 888-98-99</span>
                     </a>
                 </div>
             </div>
@@ -27,17 +27,81 @@
                         <li class="list-item"><a href="/catalog" class="item-link">Вся обувь</a></li>
                         <li class="list-item"><a href="/catalog/men" class="item-link">Мужское</a></li>
                         <li class="list-item"><a href="/catalog/women" class="item-link">Женское</a></li>
-                        <li class="list-item"><a href="#" class="item-link">Аксессуары</a></li>
                     </ul>
                 </div>
                 <div class="container__IUser">
-                    <div class="IUser__cart">
-                        <a class="IUser__link" href="#"><img class="interface-icon" src="/img/icons/shopping-cart.svg" alt="Корзина"></a>
-                    </div>
-                    <a href="/users/register" class="IUser__auth">
-                        <img class="interface-icon" src="/img/icons/user.svg" alt="Авторизация">
-                    </a>
+
+                    <% if (user && (cart === "undefined")) { %>
+                        <div class="User__cart">
+                            <a class="User__cart__link js-open-modal" data-modal="1" href="#">
+                                <img class="interface-icon-cart" src="/img/icons/shopping-cart.svg" alt="Корзина">   
+                                <span class="sphere"></span>
+                                <span class="count">0</span>
+                            </a>
+                        </div>
+                    <% } else if (user && (cart !== "undefined" || cart !== "")) { %>
+                        <div class="User__cart">
+                            <a class="User__cart__link js-open-modal" data-modal="1" href="#">
+                                <img class="interface-icon-cart" src="/img/icons/shopping-cart.svg" alt="Корзина">   
+                                <span class="sphere"></span>
+                                <span class="count"><%= cart.length %></span>
+                            </a>
+                        </div>
+                    <% } %> 
+
+                    <% if (user) { %>
+                        <a href="#" class="IUser__auth js-open-modal" data-modal="2">
+                            <img class="interface-icon-user" src="/img/icons/user.svg" alt="Авторизация">
+                        </a>
+                    <% } else { %>
+                        <a href="/users/register" class="IUser__auth">
+                            <img class="interface-icon-user" src="/img/icons/user.svg" alt="Авторизация">
+                        </a>
+                    <% } %> 
                 </div>
             </div>
         </div>
+        <div class="modal" data-modal="2">
+            <svg class="modal__cross js-modal-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg>
+            <% if (user) { %>
+                <h1>Добро пожаловать <%= user.email %></h1>
+            <% } %>
+            <a href="/users/logout" class="">Выйти из аккаунта</a>
+        </div>
+        <div class="modal" data-modal="1">
+            <svg class="modal__cross js-modal-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg>
+            <% if (user && (cart === "undefined" || cart === "")) { %>
+                <h1>Корзина пустая</h1>
+            <% } else if (user && (cart !== "undefined")) { %>
+                <table class="modal__table">
+                    <thead>
+                        <th class="modal__header">Название</th>
+                        <th class="modal__header">Количество</th>
+                        <th class="modal__header">Цена</th>
+                        <th class="modal__header">Изображение</th>
+                    </thead>
+                    <tbody>
+                        <% cart.forEach( product => { %>
+                            <tr>
+                                <td class="modal__field"><%= product.brand %><br><%= product.title %></td>
+                                <td class="modal__field"><%= product.qty %></td>
+                                <td class="modal__field"><%= product.price %>$</td>
+                                <td class="modal__field-img"><img src="<%= product.image %>" alt="<%= product.title %>" style="width:100%"></td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+                <div class="modal__bottom">
+                    <div class="modal__totalprice">
+                        <% let total = 0 %>
+                        <% for( let i = 0; i < cart.length; i++ ) { %>
+                            <% total += cart[i].qty*cart[i].price %>
+                        <% } %>
+                        <%= total %>$  
+                    </div>
+                    <a href="/cart/flush" class="modal__payment">Оставить заявку</a>
+                </div>
+            <% } %>
+        </div>
+         <div class="overlay js-overlay-modal"></div>
     </header>

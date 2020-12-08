@@ -136,6 +136,75 @@
         left:0;
         width:100%;
     }
+    .overlay {
+   
+        /* Скрываем подложку  */
+        opacity: 0;
+        visibility: hidden;
+        
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .5);
+        z-index: 20;
+        transition: .3s all;
+     }
+     
+     
+     /* Стили для модальных окон */
+     
+     .modal {
+        
+        
+        /*  Установаем ширину окна  */
+        width: 100%;
+        max-width: 320px;
+        
+        /*  Центрируем и задаем z-index */
+        position: fixed;
+
+        
+        /*  Побочные стили   */
+        box-shadow: 0 3px 10px -.5px rgba(0, 0, 0, .2); 
+        text-align: center;
+        padding: 30px;
+        border-radius: 3px;
+        background-color: #fff;
+        transition: 0.3s all;
+     }
+     
+     
+     
+     /* Стили для кнопки закрытия */
+     
+     .modal__cross {
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        fill: #444;
+        cursor: pointer;
+     }
+    
+    .modal__header,
+    .modal__field{
+        padding:6px 12px;
+        text-transform:capitalize;
+    }
+    
+    .modal__header{
+        font-weight: 800;
+        font-size: 20px;
+    }
+    
+    .modal__field-img {
+        width:50px;
+        height: 50px;
+        object-fit: contain;
+    }
 }
 
 @media(max-width: 576px) {

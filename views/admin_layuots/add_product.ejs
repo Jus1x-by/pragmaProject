@@ -32,13 +32,13 @@
         <label for="">Категория</label>
         <select name="category">
             <% categories.forEach( (cat) => { %>
-                <option value="<%= cat.slug %>"><%= cat.title %> </option>
+                <option value="<%= cat.slug %>"><%= cat.title %></option>
             <% }); %>
         </select>
         <label for="">Бренд</label>
         <select name="brand">
             <% brands.forEach( (brand) => { %>
-                <option value="<%= brand.slug %>"><%= brand.title %> </option>
+                <option value="<%= brand.slug %>"><%= brand.title %></option>
             <% }) %>
         </select>
         <label for="">Количество пар</label>

@@ -49,7 +49,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get('*', (req,res,next) => {
-  //  res.locals.cart = req.session.cart;
+   res.locals.cart = req.session.cart;
    res.locals.user = req.user || null;
    next();
 });
@@ -70,9 +70,10 @@ const adminProducts = require('./routes/adminProducts.js');
 const userPages = require('./routes/userPages.js');
 const userCatalog = require('./routes/userCatalog.js');
 const users = require('./routes/users.js');
+const cart = require('./routes/cart.js');
 
 
-
+app.use('/cart', cart);
 app.use('/users', users);
 app.use('/admin/categories', adminCategories);
 app.use('/admin/brands', adminBrands);

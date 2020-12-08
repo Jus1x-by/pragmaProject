@@ -6,6 +6,7 @@ const fs = require('fs-extra')
 const Category = require('../models/category');
 const Brand = require('../models/brand');
 const Product = require('../models/product');
+const product = require('../models/product');
 
 let categoryCash = Category.find( (err, categories) =>{
     if (err) console.log(err);
@@ -28,7 +29,8 @@ router.get('/', (req, res) => {
         res.render('catalog', {
             products:products,
             brands: brandsCash,
-            categories: categoryCash
+            categories: categoryCash,
+            cart: req.session.cart || "undefined"
         })
     })
     
@@ -46,7 +48,8 @@ router.get('/men', (req, res) => {
         res.render('./user_layuots/mencatalog', {
             products: products,
             brands: brandsCash,
-            categories: categoryCash
+            categories: categoryCash,
+            cart: req.session.cart || "undefined"
         })
     })
     
@@ -59,58 +62,48 @@ router.get('/women', (req, res) => {
         res.render('./user_layuots/womencatalog', {
             products: products,
             brands: brandsCash,
-            categories: categoryCash
+            categories: categoryCash,
+            cart: req.session.cart || "undefined"
         })
     })
     
 })
 
-/*
-    SORTED BY BRANDS
-*/
 
 
 router.get('/brands/:brand', (req, res) => {
 
     let brand = req.params.brand
 
-    Product.find( (err, products) =>{
-        if (err) return console.log(err)
+    Product.find({brand: brand}, (err, products) => {
+        if (err) console.log(err)
 
         res.render('./user_layuots/brand', {
-            cond: brand,
             products: products,
             brands: brandsCash,
-            categories: categoryCash
+            categories: categoryCash,
+            cart: req.session.cart || "undefined"
         })
     })
-
 })
 
-
-/*
-    SORTED BY CATEGORIES
-*/
 
 
 router.get('/categories/:category', (req, res) => {
 
-    let cat = req.params.category
+    let category = req.params.category
 
-    Product.find( (err, products) =>{
-        if (err) return console.log(err)
+    Product.find({category: category}, (err, products) => {
+        if (err) console.log(err)
 
-        res.render('./user_layuots/category', {
-            cond: cat,
+        res.render('./user_layuots/brand', {
             products: products,
             brands: brandsCash,
-            categories: categoryCash
+            categories: categoryCash,
+            cart: req.session.cart || "undefined"
         })
-    } )
-
+    })
 })
-
-
 
 router.get('/product/:id', (req,res) => {
 
@@ -120,6 +113,13 @@ router.get('/product/:id', (req,res) => {
         if(err) return console.log(err);
         
         let galleryDir = __dirname.substring(0, 26) + '/public/product_images/' + productID + '/gallery';
+        let categoryProduct = "";
+
+        categoryCash.forEach(cat => {
+            if (cat.slug == product.category){
+                categoryProduct = cat.title;
+            }
+        });
 
         fs.readdir(galleryDir, (err, files) => {
             res.render('product', {
@@ -127,14 +127,15 @@ router.get('/product/:id', (req,res) => {
                 price: product.price,
                 article: product.article,
                 title: product.title,
-                category: product.category,
+                category: categoryProduct,
                 sex: product.sex,
                 stock: product.stock,
                 image: product.image,
                 galleryImages: files,
                 id: product._id,
                 categories: categoryCash,
-                brands: brandsCash
+                brands: brandsCash,
+                cart: req.session.cart || "undefined"
             })
         })
     })

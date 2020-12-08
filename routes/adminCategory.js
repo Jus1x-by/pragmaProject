@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const tr = require('transliteration')
 
 
 // Get Category model
@@ -37,7 +38,8 @@ router.get('/add-category', (req, res) => {
 router.post('/add-category', (req, res) => {
     
     let title = req.body.title;
-    let slug = title.replace(/\s+/g, '-').toLowerCase();
+    let tmp = tr.slugify(title);
+    let slug = tr.transliterate(tmp);
 
     const errors = req.validationErrors();
 
@@ -91,7 +93,8 @@ router.get('/edit-category/:id', (req,res) => {
 router.post('/edit-category/:id', (req, res) => {
   
     let title = req.body.title;
-    let slug = title.replace(/\s+/g, '-').toLowerCase();
+    let tmp = tr.slugify(title);
+    let slug = tr.transliterate(tmp);
     let id = req.params.id;
 
     const errors = req.validationErrors();
@@ -114,7 +117,7 @@ router.post('/edit-category/:id', (req, res) => {
                 Category.findById(id, (req, category) => {
                     category.title = title;
                     category.slug = slug;
-                    category.save(function (err){
+                    category.save( (err) => {
                         if (err) return console.log(err);
                     });
                     res.redirect('/admin/categories/');

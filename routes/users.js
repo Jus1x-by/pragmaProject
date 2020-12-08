@@ -25,7 +25,8 @@ router.get('/register', (req, res) =>{
         title: "Регистрация",
         categories: categoryCash,
         brands: brandsCash,
-        error: ""
+        error: "",
+        cart: req.session.cart
     })
 
 });
@@ -48,7 +49,8 @@ router.post('/register', (req, res) => {
             user: null,
             categories: categoryCash,
             brands: brandsCash,
-            title: 'Регистрация'
+            title: 'Регистрация',
+            cart: req.session.cart
         });
     } else {
         User.findOne({email: email}, (err, user) => {
@@ -97,7 +99,8 @@ router.get('/login', (req, res) => {
         title: 'Авторизация',
         brands: brandsCash,
         categories:categoryCash,
-        error: ""
+        error: "",
+        cart: req.session.cart
     });
 
 });
@@ -118,5 +121,11 @@ router.get('/logout', (req, res) => {
     res.redirect('/users/login');
 
 });
+
+
+/*
+    Account page
+*/
+
 
 module.exports = router;
